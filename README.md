@@ -14,21 +14,19 @@ The outputs are hashed (SHA-256) and recorded to enable fully reproducible verif
 
 ## Repository layout
 
-```
-
+```text
 pcp-verification/
-colab/
-colab_conservative.py   # A=3, C_BV^tot=5.0; certifies X ∈ [80k, 90k], with spot checks
-colab_optimized.py      # A=3, C_BV^tot=3.0; certifies X ∈ [50k, 60k], with spot checks
-colab_exact_small_X.py  # exact PCp(X) up to 80,000 via FFT convolution
-outputs/
-conservative/           # logs (.txt/.json) and per-file .sha256 for conservative run
-optimized/              # logs (.txt/.json) and per-file .sha256 for optimized run
-zeros/                  # logs (.txt/.json) and per-file .sha256 for exact small-X enumerator
-SHA256SUMS                # consolidated hashes for all outputs
-README.md
+├── colab/
+│   ├── colab_conservative.py   # A=3, C_BV^tot=5.0; certifies X ∈ [80k,90k]
+│   ├── colab_optimized.py      # A=3, C_BV^tot=3.0; certifies X ∈ [50k,60k]
+│   └── colab_exact_small_X.py  # exact PCp(X) up to 80,000 (FFT enumerator)
+├── outputs/
+│   ├── conservative/           # logs (.txt/.json) + per-file .sha256
+│   ├── optimized/              # logs (.txt/.json) + per-file .sha256
+│   └── zeros/                  # logs (.txt/.json) + per-file .sha256
+├── SHA256SUMS                  # consolidated hashes for all outputs
+└── README.md
 
-````
 
 > **Python**: scripts require **Python 3.11+** (uses `Decimal.ln`).  
 > **Dependencies**: only the small-X enumerator needs `numpy`. Everything else uses the standard library.
